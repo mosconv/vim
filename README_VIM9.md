@@ -143,15 +143,7 @@ backwards compatible it requires a new script style: Vim9 script!
 To avoid having more variations, the syntax inside a compiled function is the
 same as in Vim9 script.  Thus you have legacy syntax and Vim9 syntax.
 
-It should be possible to convert code from other languages to Vim
-script.  We can add functionality to make this easier.  This still needs
-to be discussed, but we can consider adding type checking and a simple
-form of classes.  If you look at JavaScript for example, it has gone
-through these stages over time, adding real class support and now
-TypeScript adds type checking.  But we'll have to see how much of that
-we actually want to include in Vim script.  Ideally a conversion tool
-can take Python, JavaScript or TypeScript code and convert it to Vim
-script, with only some things that cannot be converted.
+We consider adding type checking to Vim script.
 
 Vim script won't work the same as any specific language, but we can use
 mechanisms that are commonly known, ideally with the same syntax.  One
