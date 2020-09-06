@@ -2,7 +2,7 @@
 "
 " Author: Bram Moolenaar
 " Copyright: Vim license applies, see ":help license"
-" Last Change: 2020 Jul 12
+" Last Change: 2020 Set 6
 "
 " WORK IN PROGRESS - Only the basics work
 " Note: On MS-Windows you need a recent version of gdb.  The one included with
@@ -661,6 +661,53 @@ func s:InstallCommands()
     let s:k_map_saved = maparg('K', 'n', 0, 1)
     nnoremap K :Evaluate<CR>
   endif
+
+  " Set leader key to execute gdb commands.
+  if !exists('g:termdebug_leader')
+      let g:termdebug_leader = '<Leader>'
+  endif
+
+  " Keyboard mappings
+  if !exists('g:termdebug_run')
+      let g:termdebug_run = g:termdebug_leader . 'r'
+  endif
+
+  if !exists('g:termdebug_continue')
+      let g:termdebug_continue = g:termdebug_leader . 'c'
+  endif
+
+  if !exists('g:termdebug_break')
+      let g:termdebug_break = g:termdebug_leader . 'b'
+  endif
+
+  if !exists('g:termdebug_delete')
+      let g:termdebug_delete = g:termdebug_leader . 'd'
+  endif
+
+  if !exists('g:termdebug_next')
+      let g:termdebug_next = g:termdebug_leader . 'n'
+  endif
+
+  if !exists('g:termdebug_step')
+      let g:termdebug_step = g:termdebug_leader . 's'
+  endif
+
+  if !exists('g:termdebug_finish')
+      let g:termdebug_finish = g:termdebug_leader . 'f'
+  endif
+
+  if !exists('g:termdebug_print')
+      let g:termdebug_print = g:termdebug_leader . 'p'
+  endif
+
+  exe 'nnoremap ' . g:termdebug_run       . ' :Run<CR>'
+  exe 'nnoremap ' . g:termdebug_continue  . ' :Continue<CR>'
+  exe 'nnoremap ' . g:termdebug_break     . ' :Break<CR>'
+  exe 'nnoremap ' . g:termdebug_delete    . ' :Clear<CR>'
+  exe 'nnoremap ' . g:termdebug_next      . ' :Over<CR>'
+  exe 'nnoremap ' . g:termdebug_step      . ' :Step<CR>'
+  exe 'nnoremap ' . g:termdebug_finish    . ' :Finish<CR>'
+  exe 'nnoremap ' . g:termdebug_print     . ' :Evaluate<CR>'
 
   if has('menu') && &mouse != ''
     call s:InstallWinbar()
