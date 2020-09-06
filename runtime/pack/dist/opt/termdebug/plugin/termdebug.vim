@@ -985,7 +985,6 @@ func s:HandleCursor(msg)
       exe lnum
       exe 'sign unplace ' . s:pc_id
       exe 'sign place ' . s:pc_id . ' line=' . lnum . ' name=debugPC file=' . fname
-      setlocal signcolumn=yes
     endif
   elseif !s:stopped || fname != ''
     exe 'sign unplace ' . s:pc_id
